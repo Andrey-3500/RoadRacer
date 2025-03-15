@@ -13,12 +13,35 @@ ENTITY_SPEED = {
     'Level1Bg0': 10,
     'Level1Bg1': 10,
     'Level1Bg2': 10,
+    'Player'   : 5,
+    'Enemy1'   : 8,
+    'Enemy2'   : 6,
+    'Enemy3'   : 6,
+}
+
+ENTITY_HEALTH = {
+    'bg.ong' : 999,
+    'Level1Bg0': 999,
+    'Level1Bg1': 999,
+    'Level1Bg2': 999,
     'Player'   : 3,
-    'Enemy1'   : 6,
-    'Enemy2'   : 3,
-    'Enemy3'   : 4,
+    'Enemy1'   : 1,
+    'Enemy2'   : 1,
+    'Enemy3'   : 1,
 
 }
+
+ENTITY_DAMAGE = {
+    'Level1Bg0': 0,
+    'Level1Bg1': 0,
+    'Level1Bg2': 0,
+    'Player'   : 1,
+    'Enemy1'   : 1,
+    'Enemy2'   : 1,
+    'Enemy3'   : 1,
+
+}
+
 
 #M
 MENU_OP = ( 'NEW GAME',

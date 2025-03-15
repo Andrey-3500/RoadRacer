@@ -1,5 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import time
+
+import pygame
 
 from code.Const import ENTITY_SPEED
 from code.Entity import Entity
