@@ -1,4 +1,8 @@
-from code.Const import LEVEL_WIN_HEIGTH
+from time import sleep, time
+
+import pygame
+
+from code.Const import LEVEL_WIN_HEIGTH, ENTITY_SCORE
 from code.Enemy import Enemy
 from code.Entity import Entity
 from code.Player import Player
@@ -44,9 +48,19 @@ class EntityMediator:
                 EntityMediator.__verify_collision_entity(entity1, entity2)
 
     @staticmethod
+    def give_score(entity_list: list[Entity]):
+        for ent in entity_list:
+            if ent.name == 'Player':
+                ent.score += 0.1
+
+    @staticmethod
     def verify_health(entity_list: list[Entity]):
         for ent in entity_list:
-            if ent.health <= 0:
+            if ent.health == 0:
+
+                if ent.name != 'Player':
+                    ent.name = 'Explosion'
+                    ent.surf = pygame.image.load('./asset/Explosion.png').convert_alpha()
+
+            if ent.rect.top >= LEVEL_WIN_HEIGTH :
                 entity_list.remove(ent)
-
-

@@ -7,14 +7,14 @@ import random
 import sys
 from random import choice
 
-from code.Const import MENU_OP, SPAWN_TIME, EVENT_ENEMY, C_WHITE, C_GREEN, LEVEL_WIN_WIDTH, LEVEL_WIN_HEIGTH
+from code.Const import MENU_OP, EVENT_SPEED, SPEED_TIME, SPAWN_TIME, ENTITY_SPEED, EVENT_ENEMY, C_WHITE, C_GREEN, LEVEL_WIN_WIDTH, LEVEL_WIN_HEIGTH, C_YELLOW, C_RED
 
 import pygame.display
 from pygame.font import Font
 from pygame.rect import Rect
 from pygame.surface import Surface
 
-from code import Entity
+from code import Entity, Const
 from code.Const import WIN_HEIGTH
 from code.Enemy import Enemy
 from code.EntityFactory import EntityFactory
@@ -33,6 +33,7 @@ class Level:
         self.entity_list.extend(EntityFactory.get_entity('Level1Bg'))
         self.entity_list.append(EntityFactory.get_entity('Player'))
         pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME)
+        pygame.time.set_timer(EVENT_SPEED, SPEED_TIME, 12)
 
     def run(self):
 
@@ -45,7 +46,9 @@ class Level:
                 self.window.blit(source=ent.surf, dest=ent.rect)
                 ent.move()
 
-
+                if ent.name == 'Player':
+                    self.level_text(48, f'Score: {ent.score:.0f}', C_YELLOW, (10, WIN_HEIGTH - 45))
+                    self.level_text(48, f'Vidas: {ent.health}', C_GREEN, (10, WIN_HEIGTH - 75))
 
 
             for event in pygame.event.get():
@@ -56,10 +59,12 @@ class Level:
                 if event.type == EVENT_ENEMY:
                     choice = random.choice(('Enemy1', 'Enemy2', 'Enemy3'))
                     self.entity_list.append(EntityFactory.get_entity(choice))
+                    if Const.SPAWN_TIME >= 10:
+                        Const.SPAWN_TIME -= 10
 
-
-
-
+                if event.type == EVENT_SPEED:
+                    for chave in ENTITY_SPEED:
+                            ENTITY_SPEED[chave] += 1
 
 
             self.level_text(48, f'entidades: {len(self.entity_list)}', C_WHITE, (10, WIN_HEIGTH - 20))
@@ -69,6 +74,7 @@ class Level:
             #collisions
             EntityMediator.verify_collision(entity_list=self.entity_list)
             EntityMediator.verify_health(entity_list=self.entity_list)
+            EntityMediator.give_score(entity_list=self.entity_list)
 
         pass
 
