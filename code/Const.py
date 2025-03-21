@@ -4,7 +4,7 @@ import pygame
 C_RED = (255, 0, 0)
 C_WHITE = (255, 255, 255)
 C_GREEN = (0, 255, 0)
-C_YELLOW = (106,90,205)
+C_BLACK = (0, 0, 0)
 
 #E
 EVENT_ENEMY = pygame.USEREVENT + 1
@@ -17,8 +17,7 @@ ENTITY_SPEED = {
     'Level1Bg1': 10,
     'Level1Bg2': 10,
     'Player'   : 5,
-    'Explosion': 6,
-    'Enemy1'   : 8,
+    'Enemy1'   : 6,
     'Enemy2'   : 6,
     'Enemy3'   : 6,
 }
@@ -27,7 +26,6 @@ ENTITY_SCORE = {
     'Level1Bg0': 0,
     'Level1Bg1': 0,
     'Level1Bg2': 0,
-    'Explosion': 0,
     'Player': 0,
     'Enemy1': 0,
     'Enemy2': 0,
@@ -40,7 +38,6 @@ ENTITY_HEALTH = {
     'Level1Bg1': 999,
     'Level1Bg2': 999,
     'Player'   : 3,
-    'Explosion': 999,
     'Enemy1'   : 1,
     'Enemy2'   : 1,
     'Enemy3'   : 1,
@@ -55,7 +52,6 @@ ENTITY_DAMAGE = {
     'Enemy1'   : 1,
     'Enemy2'   : 1,
     'Enemy3'   : 1,
-    'Explosion': 0,
 
 }
 
@@ -83,11 +79,8 @@ PLAYER_KEY_RIGHT = {
                  }
 
 #W
-WIN_WIDTH = 576
-WIN_HEIGTH = 324
-
-LEVEL_WIN_WIDTH = 840
-LEVEL_WIN_HEIGTH = 650
+WIN_WIDTH = 840
+WIN_HEIGHT = 650
 
 SPAWN_TIME = 2000
 SPEED_TIME = 10000

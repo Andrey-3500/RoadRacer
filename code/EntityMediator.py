@@ -1,10 +1,9 @@
-from time import sleep, time
-
 import pygame
 
-from code.Const import LEVEL_WIN_HEIGTH, ENTITY_SCORE
+from code.Const import WIN_HEIGHT
 from code.Enemy import Enemy
 from code.Entity import Entity
+from code.EntityFactory import EntityFactory
 from code.Player import Player
 
 
@@ -14,20 +13,22 @@ class EntityMediator:
     @staticmethod
     def __verify_collision_window(ent: Entity):
         if isinstance(ent, Enemy):
-            if ent.rect.top >= LEVEL_WIN_HEIGTH :
+            if ent.rect.top >= WIN_HEIGHT :
                 ent.health = 0
 
     @staticmethod
     def __verify_collision_entity(ent1, ent2):
+
         valid_interaction = False
         if isinstance(ent1, Enemy) and isinstance(ent2, Player):
-            valid_interaction = True
+                valid_interaction = True
         elif isinstance(ent1, Player) and isinstance(ent2, Enemy):
-            valid_interaction = True
+                valid_interaction = True
         elif isinstance(ent1, Player) and isinstance(ent2, Enemy):
-            valid_interaction = True
+                valid_interaction = True
         elif isinstance(ent1, Enemy) and isinstance(ent2, Player):
-            valid_interaction = True
+                valid_interaction = True
+
 
         if valid_interaction:  # if valid_interaction == True:
             if (ent1.rect.right >= ent2.rect.left and
@@ -40,12 +41,12 @@ class EntityMediator:
 
     @staticmethod
     def verify_collision(entity_list: list[Entity]):
-        for i in range(len(entity_list)):
-            entity1 = entity_list[i]
-            EntityMediator.__verify_collision_window(entity1)
-            for j in range(i+1, len(entity_list)):
-                entity2 = entity_list[j]
-                EntityMediator.__verify_collision_entity(entity1, entity2)
+            for i in range(len(entity_list)):
+                entity1 = entity_list[i]
+                EntityMediator.__verify_collision_window(entity1)
+                for j in range(i+1, len(entity_list)):
+                    entity2 = entity_list[j]
+                    EntityMediator.__verify_collision_entity(entity1, entity2)
 
     @staticmethod
     def give_score(entity_list: list[Entity]):
@@ -56,11 +57,10 @@ class EntityMediator:
     @staticmethod
     def verify_health(entity_list: list[Entity]):
         for ent in entity_list:
+
             if ent.health == 0:
+                ent.surf = pygame.image.load('./asset/Explosion.png').convert_alpha()
+                ent.damage = 0
 
-                if ent.name != 'Player':
-                    ent.name = 'Explosion'
-                    ent.surf = pygame.image.load('./asset/Explosion.png').convert_alpha()
-
-            if ent.rect.top >= LEVEL_WIN_HEIGTH :
+            if ent.rect.top >= WIN_HEIGHT :
                 entity_list.remove(ent)

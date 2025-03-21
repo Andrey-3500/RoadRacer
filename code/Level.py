@@ -7,7 +7,7 @@ import random
 import sys
 from random import choice
 
-from code.Const import MENU_OP, EVENT_SPEED, SPEED_TIME, SPAWN_TIME, ENTITY_SPEED, EVENT_ENEMY, C_WHITE, C_GREEN, LEVEL_WIN_WIDTH, LEVEL_WIN_HEIGTH, C_YELLOW, C_RED
+from code.Const import MENU_OP, EVENT_SPEED, SPEED_TIME, SPAWN_TIME, ENTITY_SPEED, EVENT_ENEMY, C_WHITE, C_GREEN, WIN_WIDTH, WIN_HEIGHT, C_BLACK, C_RED
 
 import pygame.display
 from pygame.font import Font
@@ -15,7 +15,7 @@ from pygame.rect import Rect
 from pygame.surface import Surface
 
 from code import Entity, Const
-from code.Const import WIN_HEIGTH
+from code.Const import WIN_HEIGHT
 from code.Enemy import Enemy
 from code.EntityFactory import EntityFactory
 from code import Game
@@ -36,8 +36,9 @@ class Level:
         pygame.time.set_timer(EVENT_SPEED, SPEED_TIME, 12)
 
     def run(self):
-
-        Game.window = pygame.display.set_mode(size=(LEVEL_WIN_WIDTH, LEVEL_WIN_HEIGTH))
+        pygame.mixer.music.load('./asset/level.wav')
+        pygame.mixer_music.play(-1)
+        Game.window = pygame.display.set_mode(size=(WIN_WIDTH, WIN_HEIGHT))
         clock = pygame.time.Clock()
 
         while True:
@@ -47,8 +48,8 @@ class Level:
                 ent.move()
 
                 if ent.name == 'Player':
-                    self.level_text(48, f'Score: {ent.score:.0f}', C_YELLOW, (10, WIN_HEIGTH - 45))
-                    self.level_text(48, f'Vidas: {ent.health}', C_GREEN, (10, WIN_HEIGTH - 75))
+                    self.level_text(48, f'Score: {ent.score:.0f}', C_BLACK, (10, WIN_HEIGHT / 2 + 45))
+                    self.level_text(48, f'Vidas: {ent.health}', C_GREEN, (10, WIN_HEIGHT / 2 + 75))
 
 
             for event in pygame.event.get():
@@ -67,7 +68,7 @@ class Level:
                             ENTITY_SPEED[chave] += 1
 
 
-            self.level_text(48, f'entidades: {len(self.entity_list)}', C_WHITE, (10, WIN_HEIGTH - 20))
+            self.level_text(48, f'entidades: {len(self.entity_list)}', C_WHITE, (10, WIN_HEIGHT / 2))
             pygame.display.flip()
 
 
