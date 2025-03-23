@@ -62,7 +62,7 @@ MENU_OP = ( 'NEW GAME',
             'SCORE',
             'EXIT')
 
-#K
+#P
 PLAYER_KEY_UP = {
                     'Player': pygame.K_w
                  }
@@ -78,7 +78,6 @@ PLAYER_KEY_LEFT = {
 PLAYER_KEY_RIGHT = {
                     'Player': pygame.K_d
                  }
-
 #W
 WIN_WIDTH = 840
 WIN_HEIGHT = 650

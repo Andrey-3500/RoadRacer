@@ -3,7 +3,6 @@ import pygame
 from code.Const import WIN_HEIGHT
 from code.Enemy import Enemy
 from code.Entity import Entity
-from code.EntityFactory import EntityFactory
 from code.Player import Player
 
 

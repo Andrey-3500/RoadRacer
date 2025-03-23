@@ -20,7 +20,6 @@ class Menu:
 
         while True:
 
-
             self.window.blit(source=self.surf, dest=self.rect)
             self.menu_text(150, 'Road', C_RED, ((WIN_WIDTH / 2 - 170), 120))
             self.menu_text(150, 'Racer', C_RED, ((WIN_WIDTH / 2 + 170), 120))
@@ -57,10 +56,6 @@ class Menu:
 
                     if event.key == pygame.K_RETURN: #Enter
                         return MENU_OP[menu_option]
-
-
-
-
 
 
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from code.Background import Background
-from code.Const import WIN_WIDTH, WIN_HEIGHT, WIN_WIDTH, WIN_HEIGHT
+from code.Const import WIN_WIDTH, WIN_HEIGHT
 from code.Enemy import Enemy
 from code.Player import Player
 from random import randint

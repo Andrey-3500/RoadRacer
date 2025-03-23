@@ -1,20 +1,14 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
 import random
 import sys
-from operator import is_not
 from random import choice
-
 from code.Const import EVENT_SPEED, SPEED_TIME, SPAWN_TIME, ENTITY_SPEED, EVENT_ENEMY, C_WHITE, C_GREEN, WIN_WIDTH, WIN_HEIGHT, C_BLACK, C_RED
-
 import pygame.display
 from pygame.font import Font
 from pygame.rect import Rect
 from pygame.surface import Surface
-
 from code import Entity, Const
 from code.Const import WIN_HEIGHT
 from code.Enemy import Enemy
@@ -51,8 +45,8 @@ class Level:
                 ent.move()
 
                 if ent.name == 'Player':
-                    self.level_text(48, f'Score: {player_score[0]:.0f}', C_BLACK, (10, WIN_HEIGHT / 2 + 45))
-                    self.level_text(48, f'Vidas: {ent.health}', C_GREEN, (10, WIN_HEIGHT / 2 + 75))
+                    self.level_text(48, f'Score: {player_score[0]:.0f}', C_BLACK, (10, 75))
+                    self.level_text(48, f'Vidas: {ent.health}', C_GREEN, (10, 45))
 
 
             for event in pygame.event.get():
@@ -82,21 +76,13 @@ class Level:
                 if not found_player:
                     return player_score
 
-
-
-
-            # self.level_text(48, f'entidades: {len(self.entity_list)}', C_WHITE, (10, WIN_HEIGHT / 2))
             pygame.display.flip()
-
 
             #collisions
             EntityMediator.verify_collision(entity_list=self.entity_list)
             EntityMediator.verify_health(entity_list=self.entity_list)
             EntityMediator.give_score(entity_list=self.entity_list)
-
         pass
-
-
 
     def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
         text_font: Font = pygame.font.SysFont(name="Lucida Sans Typewriter", size=text_size)
