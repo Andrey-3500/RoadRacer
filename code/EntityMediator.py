@@ -61,6 +61,8 @@ class EntityMediator:
             if ent.health == 0:
                 ent.surf = pygame.image.load('./asset/Explosion.png').convert_alpha()
                 ent.damage = 0
+                if ent.name == 'Player':
+                    entity_list.remove(ent)
 
             if ent.rect.top >= WIN_HEIGHT :
                 entity_list.remove(ent)

@@ -3,6 +3,7 @@ import pygame
 #C
 C_RED = (255, 0, 0)
 C_WHITE = (255, 255, 255)
+C_YELLOW = (255, 255, 0)
 C_GREEN = (0, 255, 0)
 C_BLACK = (0, 0, 0)
 
@@ -82,5 +83,19 @@ PLAYER_KEY_RIGHT = {
 WIN_WIDTH = 840
 WIN_HEIGHT = 650
 
+#S
 SPAWN_TIME = 2000
 SPEED_TIME = 10000
+
+SCORE_POS = {
+             0: (WIN_WIDTH / 2, 310),
+             1: (WIN_WIDTH / 2, 330),
+             2: (WIN_WIDTH / 2, 350),
+             3: (WIN_WIDTH / 2, 370),
+             4: (WIN_WIDTH / 2, 490),
+             5: (WIN_WIDTH / 2, 410),
+             6: (WIN_WIDTH / 2, 430),
+             7: (WIN_WIDTH / 2, 450),
+             8: (WIN_WIDTH / 2, 470),
+             9: (WIN_WIDTH / 2, 490),
+             }
